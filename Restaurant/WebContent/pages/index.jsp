@@ -24,16 +24,10 @@
         <h2>Famously Delicious</h2>
       </div>
       <div id="headright" class="grid_7 prefix_5 omega">
-     <c:choose>
-      <c:when  test="${not empty loggedUser}">
-        <h3 class="login"><span class="hiUser"><c:out value="Hi, ${loggedUser}"></c:out> |</span> <span class="myAccount"><a href="#">My Account</a></span> <a href="logout">Logout</a></h3>
-       </c:when>
-       <c:otherwise>
-        <h3 class="login"><a href="login">Sign up</a> / <a href="login">Login</a></h3>
-        </c:otherwise>
-       </c:choose>
-        <p>Subtotal: $ 00.00</p>
-        <p><span class="vChart"><a href="shoppingcart.jsp">View Cart</a></span> <span class="cOut"><a href="checkout.jsp">Checkout</a></span></p>
+     
+     <jsp:include page="loginhead.jsp" ></jsp:include>
+     
+        
       </div>
     </div>
     

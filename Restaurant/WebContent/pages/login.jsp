@@ -18,9 +18,7 @@
         <h2>Famously Delicious</h2>
       </div>
       <div id="headright" class="grid_7 prefix_5 omega">
-        <h3 class="login"><span class="hiUser">Hi, Monika Halim |</span> <span class="myAccount"><a href="#">My Account</a></span> <a href="#">Logout</a></h3>
-        <p>Subtotal: $ 00.00</p>
-        <p><span class="vChart"><a href="shoppingcart.html">View Cart</a></span> <span class="cOut"><a href="checkout.html">Checkout</a></span></p>
+       <jsp:include page="loginhead.jsp" ></jsp:include>
       </div>
     </div>
     
