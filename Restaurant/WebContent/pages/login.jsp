@@ -39,7 +39,7 @@
     <div class="checkout grid_16">
       <div class="newAccount grid_8 alpha">
         <h4>Create New Account</h4>
-        <p>${regError}</p>
+        <p>${message}</p>
         <form method="post" action="registration">
           <fieldset>
             <label for="login">Login: </label>
@@ -64,13 +64,14 @@
       </div>
       <div class="loginPage grid_8 omega">
         <h4>Login</h4>
-        <form method="post" action="#">
+         <p>${message2}</p>
+        <form method="post" action="login">
           <fieldset>
-            <label for="email2">Email:</label>
-            <input type="text" tabindex="1" size="50" value="" id="email2" name="email" class="text" />
+            <label for="email2">Login:</label>
+            <input type="text" tabindex="1" size="50" value="${invalidLogin2}" id="email2" name="enteredLogin" class="text" />
             <br />
             <label for="password2">Password:</label>
-            <input type="password" tabindex="2" size="22" value="" id="password2" name="password" class="text" />
+            <input type="password" tabindex="2" size="22" value="" id="password2" name="enteredPassword" class="text" />
             <br />
             <div class="clear"></div>
           </fieldset>

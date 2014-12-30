@@ -26,7 +26,13 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
+        //System.out.println("User="+session.getAttribute("user"));
+        if(session != null){
+            session.invalidate();
+        }
+        //response.sendRedirect("login.jsp");
+        request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 	}
 
 	/**
@@ -38,7 +44,8 @@ public class LogoutServlet extends HttpServlet {
         if(session != null){
             session.invalidate();
         }
-        response.sendRedirect("login.jsp");
+        //response.sendRedirect("login.jsp");
+        request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 	}
 
 }

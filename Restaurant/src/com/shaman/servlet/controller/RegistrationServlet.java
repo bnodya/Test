@@ -61,19 +61,20 @@ public class RegistrationServlet extends HttpServlet {
 				
 				
 				request.setAttribute("userList", list);
-				request.getRequestDispatcher("pages/user.jsp").forward(request,
+				request.setAttribute("message", "Registration successful. You can login.");
+				request.getRequestDispatcher("pages/login.jsp").forward(request,
 						response);
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 				request.setAttribute("invalidLogin", enteredLogin);
-				request.setAttribute("regError", "There is a user with the same name.");
+				request.setAttribute("message", "There is a user with the same name.");
 				request.getRequestDispatcher("pages/login.jsp").forward(request, response);
 				
 			}
 		} else {
 			request.setAttribute("invalidLogin", enteredLogin);
-			request.setAttribute("regError", "Invalid input.");
+			request.setAttribute("message", "Invalid input.");
 			request.getRequestDispatcher("pages/login.jsp").forward(request, response);
 		}
 		

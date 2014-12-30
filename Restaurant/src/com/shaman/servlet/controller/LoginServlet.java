@@ -58,16 +58,16 @@ public class LoginServlet extends HttpServlet {
 
 			if (rs.next()) {
 				HttpSession session = request.getSession();
-				session.setAttribute("user", enteredLogin);
+				session.setAttribute("loggedUser", enteredLogin);
 				session.setMaxInactiveInterval(30 * 60);
 
-				request.setAttribute("name", enteredLogin);
+				request.setAttribute("loggedUser", enteredLogin);
 				request.getRequestDispatcher("pages/index.jsp").forward(
 						request, response);
 
 			} else {
-				request.setAttribute("name", enteredLogin);
-				request.setAttribute("loginError", "Invalid login or password.");
+				request.setAttribute("invalidLogin2", enteredLogin);
+				request.setAttribute("message2", "Invalid login or password.");
 				request.getRequestDispatcher("pages/login.jsp").forward(
 						request, response);
 			}
