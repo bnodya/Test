@@ -1,21 +1,80 @@
 package com.shaman.servlet.controller.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.shaman.servlet.controller.connection.ConnectionManager;
+import com.shaman.servlet.controller.connection.Request;
+import com.shaman.servlet.controller.transformer.UserTransformer;
 import com.shaman.servlet.model.User;
 
 public class UserDao {
 
-	public User create(){
+	Connection con = null;
+	ResultSet rs;
+	UserTransformer transformer = new UserTransformer();
+	List<User> list;
+
+	public User createUser(HttpServletRequest request) throws SQLException {
+
+		String enteredLogin = request.getParameter("enteredLogin");
+		String enteredPassword = request.getParameter("enteredPassword");
+		String enteredEmail = request.getParameter("enteredEmail");
+
+		con = ConnectionManager.getConnection();
+		PreparedStatement prepStmt;
+
+		prepStmt = con.prepareStatement(Request.CHECK_USER);
+		prepStmt.setString(1, enteredLogin);
+		rs = prepStmt.executeQuery();
+		rs.next();
+		if (rs.getInt("rowCount") == 0) {
+
+			prepStmt = con.prepareStatement(Request.ADD_USER);
+
+			prepStmt.setString(1, enteredLogin);
+			prepStmt.setString(2, enteredPassword);
+			prepStmt.setString(3, enteredEmail);
+			prepStmt.execute();
+		} else {
+			throw new SQLException();
+		}
+		return null;
+
+	}
+
+	public User read(int id) {
 		return null;
 	}
-	
-	public User read(int id){
-		return null;
+
+	public List<User> readAll() {
+
+		try {
+			con = ConnectionManager.getConnection();
+			Statement stmt = con.createStatement();
+			list = new ArrayList<>();
+
+			rs = stmt.executeQuery(Request.SELECT);
+			list = transformer.resultSetToList(rs);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
-	
-	public void update(User user){
+
+	public void update(User user) {
 	}
-	
-	public void delete(User user){	
+
+	public void delete(User user) {
 	}
-	
+
 }

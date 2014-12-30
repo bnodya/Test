@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shaman.servlet.controller.connection.ConnectionManager;
 import com.shaman.servlet.controller.connection.Request;
+import com.shaman.servlet.controller.service.UserService;
+import com.shaman.servlet.controller.validator.UserValidator;
 import com.shaman.servlet.model.User;
 
 
@@ -45,44 +47,19 @@ public class RegistrationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		List<User> list = new ArrayList<>();
-		User user;
-		Connection con = null;
-
-		String enteredLogin = request.getParameter("enteredLogin");
-		String enteredPassword = request.getParameter("enteredPassword");
-		String enteredEmail = request.getParameter("enteredEmail");
 		
-		if (!enteredLogin.isEmpty() && !enteredPassword.isEmpty() && !enteredEmail.isEmpty()) {
+		String enteredLogin = request.getParameter("enteredLogin");
+		
+		UserValidator validator = new UserValidator(request);
+		List<User> list;
+		System.out.println(validator.isEmpty());
+		if (!validator.isEmpty()) {
 			try {
-
-				con = ConnectionManager.getConnection();
-				Statement stmt = con.createStatement();
-				PreparedStatement prepStmt = con
-						.prepareStatement(Request.ADD_USER);
-
-				ResultSet rs = stmt.executeQuery(Request.COUNT_USERS);
-				rs.next();
-				int numberOfUsers = rs.getInt("rowCount") + 1;
-				prepStmt.setInt(1, numberOfUsers);
-				prepStmt.setString(2, enteredLogin);
-				prepStmt.setString(3, enteredPassword);
-				prepStmt.setString(4, enteredEmail);
-				prepStmt.execute();
-
-				rs = stmt.executeQuery(Request.SELECT);
-//				while (rs.next()) {
-//					user = new User();
-//					user.setId(rs.getInt(1));
-//					user.setLogin(rs.getString(2));
-//					user.setPassword(rs.getString(3));
-//					user.setEmail(rs.getString(4));
-//					list.add(user);
-//
-//				}
-//				
-//				use transformer!!!!
+				
+				UserService.createUser(request);
+				
+				list = UserService.getAllUsers();
+				
 				
 				request.setAttribute("userList", list);
 				request.getRequestDispatcher("pages/user.jsp").forward(request,

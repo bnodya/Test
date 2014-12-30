@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 				session.setMaxInactiveInterval(30 * 60);
 
 				request.setAttribute("name", enteredLogin);
-				request.getRequestDispatcher("pages/loginsuccess.jsp").forward(
+				request.getRequestDispatcher("pages/index.jsp").forward(
 						request, response);
 
 			} else {

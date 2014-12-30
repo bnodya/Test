@@ -39,6 +39,7 @@
     <div class="checkout grid_16">
       <div class="newAccount grid_8 alpha">
         <h4>Create New Account</h4>
+        <p>${regError}</p>
         <form method="post" action="registration">
           <fieldset>
             <label for="login">Login: </label>
@@ -51,7 +52,7 @@
             <input type="password" tabindex="4" size="22" value="" id="password" name="enteredPassword" class="text" />
             <br />
             <label for="repassword">Retype Password:</label>
-            <input type="password" tabindex="5" size="22" value="" id="repassword" name="enteredRepassword" class="text" />
+            <input type="password" tabindex="5" size="22" value="" id="repassword" name="reenteredPassword" class="text" />
             <br />
             <div class="clear"></div>
           </fieldset>

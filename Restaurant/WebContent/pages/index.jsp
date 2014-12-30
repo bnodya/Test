@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,6 +24,9 @@
         <h2>Famously Delicious</h2>
       </div>
       <div id="headright" class="grid_7 prefix_5 omega">
+      <c:if test="${not empty user}">
+        <h3 class="login"><span class="hiUser">Hi, ${user} |</span> <span class="myAccount"><a href="#">My Account</a></span> <a href="#">Logout</a></h3>
+       </c:if>
         <h3 class="login"><a href="login">Sign up</a> / <a href="login">Login</a></h3>
         <p>Subtotal: $ 00.00</p>
         <p><span class="vChart"><a href="shoppingcart.jsp">View Cart</a></span> <span class="cOut"><a href="checkout.jsp">Checkout</a></span></p>
