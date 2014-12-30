@@ -21,7 +21,7 @@ public class UserDao {
 	ResultSet rs;
 	UserTransformer transformer = new UserTransformer();
 	List<User> list;
-
+	User user;
 	public User createUser(HttpServletRequest request) throws SQLException {
 
 		String enteredLogin = request.getParameter("enteredLogin");
@@ -50,11 +50,34 @@ public class UserDao {
 
 	}
 
-	public User read(int id) {
+	public User selectById(int id) {
 		return null;
 	}
 
-	public List<User> readAll() {
+	public User selectByLoginAndPassword(HttpServletRequest request) {
+		
+		try {
+			con = ConnectionManager.getConnection();
+			String enteredLogin = request.getParameter("enteredLogin");
+			String enteredPassword = request.getParameter("enteredPassword");
+			PreparedStatement stmt = con
+					.prepareStatement(Request.SELECT_USER_BY_NAME_AND_PASSWORD);
+			stmt.setString(1, enteredLogin);
+			stmt.setString(2, enteredPassword);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				user = transformer.resultSetToObject(rs);
+				return user;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<User> selectAll() {
 
 		try {
 			con = ConnectionManager.getConnection();

@@ -6,6 +6,6 @@ public class Request {
 	public static final String COUNT_USERS = "SELECT COUNT(*) AS rowCount FROM user";
 	public static final String SELECT_USER_BY_NAME = "SELECT * FROM user WHERE login=?";
 	public static final String DELETE_USER_BY_NAME = "DELETE FROM user WHERE login=?";
-	public static final String SELECT_USER_BY_NAME_AND_PASSWORD = "SELECT user_id FROM user WHERE login=? AND password=?";
+	public static final String SELECT_USER_BY_NAME_AND_PASSWORD = "SELECT * FROM user WHERE login=? AND password=?";
 	public static final String CHECK_USER = "SELECT COUNT(*) AS rowCount FROM user WHERE login=?";
 }

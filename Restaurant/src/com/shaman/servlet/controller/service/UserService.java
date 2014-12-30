@@ -13,14 +13,18 @@ public class UserService {
 	private static UserDao dao = new UserDao();
 
 	public static User getUserById(int id) {
-		return dao.read(id);
+		return dao.selectById(id);
 	}
 
 	public static List<User> getAllUsers() {
-		return dao.readAll();
+		return dao.selectAll();
 	}
 	
 	public static void createUser(HttpServletRequest request) throws SQLException{
 		dao.createUser(request);
+	}
+	
+	public static User getUserByLoginAndPassword(HttpServletRequest request){
+		return dao.selectByLoginAndPassword(request);
 	}
 }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.shaman.servlet.controller.connection.ConnectionManager;
 import com.shaman.servlet.controller.connection.Request;
+import com.shaman.servlet.controller.service.UserService;
 
 /**
  * Servlet implementation class LoginServlet
@@ -45,18 +46,10 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Connection con = ConnectionManager.getConnection();
+
 		String enteredLogin = request.getParameter("enteredLogin");
-		String enteredPassword = request.getParameter("enteredPassword");
-		try {
-			PreparedStatement stmt = con
-					.prepareStatement(Request.SELECT_USER_BY_NAME_AND_PASSWORD);
-			stmt.setString(1, enteredLogin);
-			stmt.setString(2, enteredPassword);
 
-			ResultSet rs = stmt.executeQuery();
-
-			if (rs.next()) {
+			if (UserService.getUserByLoginAndPassword(request) != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loggedUser", enteredLogin);
 				session.setMaxInactiveInterval(30 * 60);
@@ -72,9 +65,6 @@ public class LoginServlet extends HttpServlet {
 						request, response);
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		}
+		
 	}
 }
