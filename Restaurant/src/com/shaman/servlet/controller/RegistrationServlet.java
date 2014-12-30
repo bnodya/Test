@@ -57,7 +57,6 @@ public class RegistrationServlet extends HttpServlet {
 			try {
 				
 				UserService.createUser(request);
-				
 				list = UserService.getAllUsers();
 				
 				
@@ -69,13 +68,13 @@ public class RegistrationServlet extends HttpServlet {
 				e.printStackTrace();
 				request.setAttribute("invalidLogin", enteredLogin);
 				request.setAttribute("regError", "There is a user with the same name.");
-				request.getRequestDispatcher("pages/registration.jsp").forward(request, response);
+				request.getRequestDispatcher("pages/login.jsp").forward(request, response);
 				
 			}
 		} else {
 			request.setAttribute("invalidLogin", enteredLogin);
 			request.setAttribute("regError", "Invalid input.");
-			request.getRequestDispatcher("pages/registration.jsp").forward(request, response);
+			request.getRequestDispatcher("pages/login.jsp").forward(request, response);
 		}
 		
 	}
