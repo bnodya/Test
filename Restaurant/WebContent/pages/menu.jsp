@@ -4,7 +4,7 @@
 
 <div id="mainMenu" class="grid_16">
       <ul>
-        <li><a href="index.html" class="Active">Home</a></li>
+        <li><a href="index.jsp" class="Active">Home</a></li>
         <li><a href="#">Cakes</a></li>
         <li><a href="#">Order &amp; Delivery</a></li>
         <li><a href="#">Blog</a></li>
