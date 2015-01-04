@@ -1,11 +1,18 @@
 package com.shaman.servlet.model;
 
+import com.shaman.servlet.controller.transformer.annotation.DBColumn;
+
 public class User {
 	
+	@DBColumn(name = "user_id")
 	private int id;
+	@DBColumn(name = "login")
 	private String login;
+	@DBColumn(name = "password")
 	private String password;
+	@DBColumn(name = "email")
 	private String email;
+	@DBColumn(name = "access")
 	private int isAdmin;
 
 	public int isAdmin() {
