@@ -25,14 +25,7 @@
 	<jsp:include page="menu.jsp" ></jsp:include>
 
     <div id="stickySearch" class="grid_16">
-      <div class="stickyNews grid_12 alpha">
-        <p>Valentine’s BrownieCheese Special Package. <em>Free Delivery.</em> <a href="#" class="bookMan">More &raquo;</a></p>
-      </div>
-      <div class="search grid_4 omega">
-        <form action="#" method="get">
-          <input type="text" value="Type your keyword" id="s" name="s" onfocus="if (this.value == 'Type your keyword') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Type your keyword';}" />
-        </form>
-      </div>
+
     </div>
     <div class="prodNav grid_16">
       <div class="breadcrumb grid_12 alpha"> <a href="#">Cakes</a> &raquo; <a href="#">Brownies</a> &raquo; Brownimissu</div>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="styles/960.css" />
 <link rel="stylesheet" type="text/css" media="all" href="styles/reset.css" />
 <link rel="stylesheet" type="text/css" media="all" href="styles/text.css" />
-<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="styles/style.css" />
 <link rel="stylesheet" type="text/css" media="all" href="themes/brown/style.css" />
 
 <link rel="stylesheet" type="text/css" media="all" href="../styles/960.css" />
@@ -31,14 +31,6 @@
 	<jsp:include page="menu.jsp" ></jsp:include>
 
     <div id="stickySearch" class="grid_16">
-      <div class="stickyNews grid_12 alpha">
-        <p>Valentine’s BrownieCheese Special Package. <em>Free Delivery.</em> <a href="#" class="bookMan">More &raquo;</a></p>
-      </div>
-      <div class="search grid_4 omega">
-        <form action="#" method="get">
-          <input type="text" value="Type your keyword" id="s" name="s" onfocus="if (this.value == 'Type your keyword') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Type your keyword';}" />
-        </form>
-      </div>
     </div>
     <div class="pageInfo grid_16">
       <div class="dapurBlog grid_11 alpha">

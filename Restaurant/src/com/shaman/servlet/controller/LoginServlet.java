@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String enteredLogin = request.getParameter("enteredLogin");
-
+		
 		if (UserService.getUserByLoginAndPassword(request) != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedUser", enteredLogin);

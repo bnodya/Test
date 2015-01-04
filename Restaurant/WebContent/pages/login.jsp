@@ -26,18 +26,13 @@
 
     <div id="stickySearch" class="grid_16">
       <div class="stickyNews grid_12 alpha">
-        <p>Valentine’s BrownieCheese Special Package. <em>Free Delivery.</em> <a href="#" class="bookMan">More &raquo;</a></p>
+        <p><a class="bookMan">${message} ${message2}</a></p>
       </div>
-      <div class="search grid_4 omega">
-        <form action="#" method="get">
-          <input type="text" value="Type your keyword" id="s" name="s" onfocus="if (this.value == 'Type your keyword') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Type your keyword';}" />
-        </form>
-      </div>
+    
     </div>
     <div class="checkout grid_16">
       <div class="newAccount grid_8 alpha">
         <h4>Create New Account</h4>
-        <p>${message}</p>
         <form method="post" action="registration">
           <fieldset>
             <label for="login">Login: </label>
@@ -62,7 +57,6 @@
       </div>
       <div class="loginPage grid_8 omega">
         <h4>Login</h4>
-         <p>${message2}</p>
         <form method="post" action="login">
           <fieldset>
             <label for="email2">Login:</label>
