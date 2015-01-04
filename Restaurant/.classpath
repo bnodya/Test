@@ -17,5 +17,8 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.26-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/c3p0-0.9.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/c3p0-oracle-thin-extras-0.9.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mchange-commons-java-0.2.9.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

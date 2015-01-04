@@ -1,5 +1,7 @@
 package com.shaman.servlet.controller.dao;
 
+import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +30,12 @@ public class UserDao {
 		String enteredPassword = request.getParameter("enteredPassword");
 		String enteredEmail = request.getParameter("enteredEmail");
 
-		con = ConnectionManager.getConnection();
+		try {
+			con = ConnectionManager.getInstance().getConnection();
+		} catch (IOException | PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		PreparedStatement prepStmt;
 
 		prepStmt = con.prepareStatement(Request.CHECK_USER);
@@ -57,7 +64,12 @@ public class UserDao {
 	public User selectByLoginAndPassword(HttpServletRequest request) {
 		
 		try {
-			con = ConnectionManager.getConnection();
+			try {
+				con = ConnectionManager.getInstance().getConnection();
+			} catch (IOException | PropertyVetoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			String enteredLogin = request.getParameter("enteredLogin");
 			String enteredPassword = request.getParameter("enteredPassword");
 			PreparedStatement stmt = con
@@ -80,14 +92,14 @@ public class UserDao {
 	public List<User> selectAll() {
 
 		try {
-			con = ConnectionManager.getConnection();
+			con = ConnectionManager.getInstance().getConnection();
 			Statement stmt = con.createStatement();
 			list = new ArrayList<>();
 
 			rs = stmt.executeQuery(Request.SELECT);
 			list = transformer.resultSetToList(rs);
 
-		} catch (SQLException e) {
+		} catch (SQLException | IOException | PropertyVetoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

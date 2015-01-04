@@ -1,12 +1,7 @@
 package com.shaman.servlet.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shaman.servlet.controller.connection.ConnectionManager;
-import com.shaman.servlet.controller.connection.Request;
+
 import com.shaman.servlet.controller.service.UserService;
 import com.shaman.servlet.controller.validator.UserValidator;
 import com.shaman.servlet.model.User;
@@ -52,25 +46,26 @@ public class RegistrationServlet extends HttpServlet {
 		
 		UserValidator validator = new UserValidator(request);
 		List<User> list;
-		System.out.println(validator.isEmpty());
+		
 		if (!validator.isEmpty()) {
 			try {
+				if(UserService.createUser(request)){
+					list = UserService.getAllUsers();
 				
-				UserService.createUser(request);
-				list = UserService.getAllUsers();
-				
-				
-				request.setAttribute("userList", list);
-				request.setAttribute("message", "Registration successful. You can login.");
-				request.getRequestDispatcher("pages/login.jsp").forward(request,
-						response);
+					request.setAttribute("userList", list);
+					request.setAttribute("message", "Registration successful. You can login.");
+					request.getRequestDispatcher("pages/login.jsp").forward(request,
+							response);
+				} else {
+					request.setAttribute("invalidLogin", enteredLogin);
+					request.setAttribute("message", "There is a user with the same name.");
+					request.getRequestDispatcher("pages/login.jsp").forward(request, response);
+				}
+//				request.getRequestDispatcher("pages/userlist.jsp").forward(request,
+//						response);
 
 			} catch (SQLException e) {
 				e.printStackTrace();
-				request.setAttribute("invalidLogin", enteredLogin);
-				request.setAttribute("message", "There is a user with the same name.");
-				request.getRequestDispatcher("pages/login.jsp").forward(request, response);
-				
 			}
 		} else {
 			request.setAttribute("invalidLogin", enteredLogin);
