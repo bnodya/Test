@@ -37,16 +37,6 @@ public class Transformer<T> {
 		}
 	}
 
-	// public static User getPojo(ResultSet rs) throws SQLException {
-	// User currentUser = new User();
-	// currentUser.setId(rs.getInt(1));
-	// currentUser.setLogin(rs.getString(2));
-	// currentUser.setPassword(rs.getString(3));
-	// currentUser.setEmail(rs.getString(4));
-	// currentUser.setIsAdmin(rs.getInt(5));
-	// return currentUser;
-	// }
-
 	public T getPojo(ResultSet rs){
 		T pojo = null;
 		try {
@@ -56,7 +46,6 @@ public class Transformer<T> {
 			for(Field field:fields){
 				String fieldType = field.getType().getSimpleName()
 						.toLowerCase();
-				System.out.println(field.getName());
 				String column = attributeFrom(field.getName());
 				field.setAccessible(true);
 				if (column != null) {
@@ -86,20 +75,24 @@ public class Transformer<T> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(pojo);
 		return pojo;
 	}
 
 	public static <T> PreparedStatement getPreparedInsert(TableName tableName,
 			T currentPojo) throws SQLException {
 		initialize();
-		User currentUser = (User) currentPojo;
-		PreparedStatement ps = con.prepareStatement("Insert into " + tableName
+		switch (tableName) {
+		case USER:
+			User currentUser = (User) currentPojo;
+			PreparedStatement ps = con.prepareStatement("Insert into " + tableName
 				+ "(login,password,email)" + " VALUES(?, ?, ?)");
-		ps.setString(1, currentUser.getLogin());
-		ps.setString(2, currentUser.getPassword());
-		ps.setString(3, currentUser.getEmail());
-		return ps;
+			ps.setString(1, currentUser.getLogin());
+			ps.setString(2, currentUser.getPassword());
+			ps.setString(3, currentUser.getEmail());
+			return ps;
+		default:
+			return null;
+		}
 	}
 
 	public List<T> getPojoList(ResultSet rs) {

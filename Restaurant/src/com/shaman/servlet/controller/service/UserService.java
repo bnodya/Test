@@ -10,26 +10,20 @@ import com.shaman.servlet.controller.dao.daoenum.TableName;
 import com.shaman.servlet.model.User;
 
 public class UserService {
-
-//	private static UserDao dao = new UserDao();
-//
-//	public static User getUserById(int id) {
-//		return dao.selectById(id);
-//	}
-//
-//	public static List<User> getAllUsers() {
-//		return dao.selectAll();
-//	}
-//																						
-//	public static void createUser(HttpServletRequest request) throws SQLException{
-//		dao.createUser(request);
-//	}
-//	
-//	public static User getUserByLoginAndPassword(HttpServletRequest request){
-//		return dao.selectByLoginAndPassword(request);
-//	}
 	
 	static DAOFactory dao = new DAOFactory();
+	
+	public static User getUserByLogin(String login){
+		User user = null;
+		try {
+			user = dao.getDAORead().getPojoForPrimarKey(TableName.USER, login);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+		
+	}
 	
 	public static List<User> getAllUsers() {
 		try {
@@ -45,14 +39,16 @@ public class UserService {
 		return dao.getDAOInsert().putInto(TableName.USER, request);
 	}
 	
-	public static User getUserByLoginAndPassword(HttpServletRequest request){
-		try {
-			return new DAOFactory().getDAORead().selectByLoginAndPassword(request);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+	public static boolean getLoggedUser(HttpServletRequest request){
+		boolean status = false;
+		String login = request.getParameter("enteredLogin");
+		String password = request.getParameter("enteredPassword");
+			try {
+				status = dao.getDAORead().isRegistered(login, password);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return status;
 	}
-	
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.shaman.servlet.controller.connection.ConnectionManager;
 import com.shaman.servlet.controller.dao.daoenum.TableName;
+import com.shaman.servlet.controller.transformer.Transformer;
 import com.shaman.servlet.model.User;
 
 public class DAOInsert {
@@ -37,7 +38,7 @@ public class DAOInsert {
 			if (fac.getDAORead().<T> alreadyExisting(tableName, currentPojo)) {
 				return false;
 			}
-			ps = Specific.<T> getPreparedInsert(tableName, currentPojo);
+			ps = Transformer.<T> getPreparedInsert(tableName, currentPojo);
 			ps.execute();
 			return true;
 		} finally {

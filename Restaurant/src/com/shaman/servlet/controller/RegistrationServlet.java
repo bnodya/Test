@@ -44,10 +44,10 @@ public class RegistrationServlet extends HttpServlet {
 		
 		String enteredLogin = request.getParameter("enteredLogin");
 		
-		UserValidator validator = new UserValidator(request);
+		UserValidator validate = new UserValidator(request);
 		List<User> list;
 		
-		if (!validator.isEmpty() && !validator.invalidPassword() && validator.isValidEmailAddress()) {
+		if (!validate.isEmpty() && validate.isValidPassword() && validate.isValidEmailAddress() && validate.isValidLogin()) {
 			try {
 				if(UserService.createUser(request)){
 					list = UserService.getAllUsers();
@@ -61,14 +61,14 @@ public class RegistrationServlet extends HttpServlet {
 					request.setAttribute("message", "There is a user with the same name.");
 					request.getRequestDispatcher("pages/login.jsp").forward(request, response);
 				}
-//				request.getRequestDispatcher("pages/userlist.jsp").forward(request,
-//						response);
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		} else {
-			request.setAttribute("invalidLogin", enteredLogin);
+			if(validate.isValidLogin()){
+				request.setAttribute("invalidLogin", enteredLogin);
+			}
 			request.setAttribute("message", "Invalid input.");
 			request.getRequestDispatcher("pages/login.jsp").forward(request, response);
 		}

@@ -9,14 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.shaman.servlet.controller.connection.ConnectionManager;
 import com.shaman.servlet.controller.connection.Query;
 import com.shaman.servlet.controller.dao.daoenum.QueryType;
 import com.shaman.servlet.controller.dao.daoenum.TableName;
 import com.shaman.servlet.controller.transformer.Transformer;
-import com.shaman.servlet.model.User;
 
 
 
@@ -43,16 +40,14 @@ public class DAORead {
 	@SuppressWarnings("unchecked")
 	public <T> List<T> getAll(TableName tableName)
 			throws SQLException {
-		
+		Transformer<T> transformer = new Transformer<T>(tableName.getClassType());
 		List<T> list = new ArrayList<T>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement("select * from " + tableName);
 			rs = ps.executeQuery();
-			while (rs.next()) {
-				list.add((T) Specific.getPojoFromResultSet(tableName, rs));
-			}
+			list = transformer.getPojoList(rs);
 		} finally {
 			DAOFactory.closeAll(ps, rs);
 		}
@@ -62,6 +57,7 @@ public class DAORead {
 	@SuppressWarnings("unchecked")
 	public <T> List<T> getAllForInput(TableName tableName,
 			String columnName, String searchValue) throws SQLException {
+		Transformer<T> transformer = new Transformer<T>(tableName.getClassType());
 		List<T> list = new ArrayList<T>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -69,43 +65,38 @@ public class DAORead {
 			ps = con.prepareStatement("SELECT * FROM " + tableName + " WHERE "
 					+ columnName + " LIKE '%" + searchValue + "%'");
 			rs = ps.executeQuery();
-			while (rs.next()) {
-				list.add((T) Specific.getPojoFromResultSet(tableName, rs));
-			}
+			list = transformer.getPojoList(rs);
 		} finally {
 			DAOFactory.closeAll(ps, rs);
 		}
 		return list;
 	}
 	
-	public User selectByLoginAndPassword(HttpServletRequest request) {
-		Transformer<User> transformer = new Transformer<>(User.class);
-		User user = null;
+	public boolean isRegistered(String login, String password) {
 		
+		boolean status = false;
 		try {
 			con = ConnectionManager.getInstance().getConnection();
-			String enteredLogin = request.getParameter("enteredLogin");
-			String enteredPassword = request.getParameter("enteredPassword");
 			PreparedStatement stmt = con
 					.prepareStatement(Query.SELECT_USER_BY_NAME_AND_PASSWORD);
-			stmt.setString(1, enteredLogin);
-			stmt.setString(2, enteredPassword);
-
+			stmt.setString(1, login);
+			stmt.setString(2, password);
 			ResultSet rs = stmt.executeQuery();
 			
 			if (rs.next()) {
-				user = (User)transformer.getPojo(rs);
-				return user;
+				status = true;
 			}
 		} catch (SQLException | IOException | PropertyVetoException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return status;
 	}
 	
 
 	public <T> T getPojoForPrimarKey(TableName tableName,
 			String primaryKey) throws SQLException {
+		@SuppressWarnings("unchecked")
+		Transformer<T> transformer = new Transformer<T>(tableName.getClassType());
 		T currentPojo = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -115,7 +106,7 @@ public class DAORead {
 			ps = con.prepareStatement(queryString);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				currentPojo = Specific.getPojoFromResultSet(tableName, rs);
+				currentPojo = transformer.getPojo(rs);
 			}
 		} finally {
 			DAOFactory.closeAll(ps, rs);
@@ -141,4 +132,29 @@ public class DAORead {
 			return true;
 		}
 	}
+	
+//	public User selectByLoginAndPassword(HttpServletRequest request) {
+//		Transformer<User> transformer = new Transformer<>(User.class);
+//		User user = null;
+//		
+//		try {
+//			con = ConnectionManager.getInstance().getConnection();
+//			String enteredLogin = request.getParameter("enteredLogin");
+//			String enteredPassword = request.getParameter("enteredPassword");
+//			PreparedStatement stmt = con
+//					.prepareStatement(Query.SELECT_USER_BY_NAME_AND_PASSWORD);
+//			stmt.setString(1, enteredLogin);
+//			stmt.setString(2, enteredPassword);
+//
+//			ResultSet rs = stmt.executeQuery();
+//			
+//			if (rs.next()) {
+//				user = (User)transformer.getPojo(rs);
+//				return user;
+//			}
+//		} catch (SQLException | IOException | PropertyVetoException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 }
