@@ -47,7 +47,7 @@ public class RegistrationServlet extends HttpServlet {
 		UserValidator validator = new UserValidator(request);
 		List<User> list;
 		
-		if (!validator.isEmpty() && !validator.invalidPassword()) {
+		if (!validator.isEmpty() && !validator.invalidPassword() && validator.isValidEmailAddress()) {
 			try {
 				if(UserService.createUser(request)){
 					list = UserService.getAllUsers();

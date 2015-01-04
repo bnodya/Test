@@ -48,11 +48,11 @@
     <div class="products grid_16">
       <div class="productsWarp">
         <ul>
-          <li><a href="pages/product-overview.jsp"><img src="images/cake1.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product-overview.html"><img src="images/cake2.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product-overview.html"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product-overview.html"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product-overview.html"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
+          <li><a href="product_overview"><img src="images/cake1.jpg" alt="" width="938" height="398" /></a></li>
+          <li><a href="product_overview"><img src="images/cake2.jpg" alt="" width="938" height="398" /></a></li>
+          <li><a href="product_overview"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
+          <li><a href="product_overview"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
+          <li><a href="product_overview"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
           
          
         </ul>
@@ -81,13 +81,13 @@
     </div>
     <div class="newCakes">
       <div class="scroller">
-        <div class="newCake"><a href="product-details.html" class="grid_4"><img src="images/freshCake1.jpg" alt="" width="220" height="120" /></a></div>
-        <div class="newCake"><a href="product-details.html" class="grid_4"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a></div>
-        <div class="newCake"><a href="product-details.html" class="grid_4"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a></div>
-        <div class="newCake"><a href="product-details.html" class="grid_4"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a></div>
-        <div class="newCake"><a href="product-details.html" class="grid_4"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a></div>
-        <div class="newCake"><a href="product-details.html" class="grid_4"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a></div>
-        <div class="newCake"><a href="product-details.html" class="grid_4"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a></div>
+        <div class="newCake"><a href="product_details" class="grid_4"><img src="images/freshCake1.jpg" alt="" width="220" height="120" /></a></div>
+        <div class="newCake"><a href="product_details" class="grid_4"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a></div>
+        <div class="newCake"><a href="product_details" class="grid_4"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a></div>
+        <div class="newCake"><a href="product_details" class="grid_4"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a></div>
+        <div class="newCake"><a href="product_details" class="grid_4"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a></div>
+        <div class="newCake"><a href="product_details" class="grid_4"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a></div>
+        <div class="newCake"><a href="product_details" class="grid_4"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a></div>
       </div>
     </div>
   </div>

@@ -51,6 +51,23 @@
   <servlet-mapping>
     <servlet-name>CheckoutServlet</servlet-name>
     <url-pattern>/checkout</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ProductDetailsServlet</servlet-name>
+    <servlet-class>com.shaman.servlet.controller.ProductDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductDetailsServlet</servlet-name>
+    <url-pattern>/product_details</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductOverviewServlet</servlet-name>
+    <servlet-class>com.shaman.servlet.controller.ProductOverviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductOverviewServlet</servlet-name>
+    <url-pattern>/product_overview</url-pattern>
+  </servlet-mapping>
 </web-app>

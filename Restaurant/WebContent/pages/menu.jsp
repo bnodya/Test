@@ -5,8 +5,8 @@
 <div id="mainMenu" class="grid_16">
       <ul>
         <li><a href="index" class="Active">Home</a></li>
-        <li><a href="#">Cakes</a></li>
-        <li><a href="#">Order &amp; Delivery</a></li>
+        <li><a href="product_overview">Cakes</a></li>
+        <li><a href="checkout">Order &amp; Delivery</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
