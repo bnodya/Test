@@ -79,7 +79,7 @@ public class DAORead {
 	}
 	
 	public User selectByLoginAndPassword(HttpServletRequest request) {
-		
+		Transformer<User> transformer = new Transformer<>(User.class);
 		User user = null;
 		
 		try {
@@ -92,9 +92,9 @@ public class DAORead {
 			stmt.setString(2, enteredPassword);
 
 			ResultSet rs = stmt.executeQuery();
-
+			
 			if (rs.next()) {
-				user = Transformer.getPojo(rs);
+				user = (User)transformer.getPojo(rs);
 				return user;
 			}
 		} catch (SQLException | IOException | PropertyVetoException e) {

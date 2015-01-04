@@ -58,9 +58,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return id + ", " + login + ", " + email + ", " + password + ", " + (isAdmin == 1?"Admin":"User");
+		return "User [id=" + id + ", login=" + login + ", password=" + password
+				+ ", email=" + email + ", isAdmin=" + (isAdmin == 1?"Admin":"User") + "]";
 	}
-
 	
 	
 }
