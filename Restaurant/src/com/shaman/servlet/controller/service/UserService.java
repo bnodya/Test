@@ -31,7 +31,6 @@ public class UserService {
 	
 	static DAOFactory dao = new DAOFactory();
 	
-	
 	public static List<User> getAllUsers() {
 		try {
 			return dao.getDAORead().getAll(TableName.USER);
@@ -44,6 +43,16 @@ public class UserService {
 	
 	public static boolean createUser(HttpServletRequest request) throws SQLException{
 		return dao.getDAOInsert().putInto(TableName.USER, request);
+	}
+	
+	public static User getUserByLoginAndPassword(HttpServletRequest request){
+		try {
+			return new DAOFactory().getDAORead().selectByLoginAndPassword(request);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }

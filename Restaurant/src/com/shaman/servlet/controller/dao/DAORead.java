@@ -9,9 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.shaman.servlet.controller.connection.ConnectionManager;
+import com.shaman.servlet.controller.connection.Query;
 import com.shaman.servlet.controller.dao.daoenum.QueryType;
 import com.shaman.servlet.controller.dao.daoenum.TableName;
+import com.shaman.servlet.controller.transformer.Transformer;
+import com.shaman.servlet.model.User;
 
 
 
@@ -72,6 +77,32 @@ public class DAORead {
 		}
 		return list;
 	}
+	
+	public User selectByLoginAndPassword(HttpServletRequest request) {
+		
+		User user = null;
+		
+		try {
+			con = ConnectionManager.getInstance().getConnection();
+			String enteredLogin = request.getParameter("enteredLogin");
+			String enteredPassword = request.getParameter("enteredPassword");
+			PreparedStatement stmt = con
+					.prepareStatement(Query.SELECT_USER_BY_NAME_AND_PASSWORD);
+			stmt.setString(1, enteredLogin);
+			stmt.setString(2, enteredPassword);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				user = Transformer.getPojo(rs);
+				return user;
+			}
+		} catch (SQLException | IOException | PropertyVetoException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 
 	public <T> T getPojoForPrimarKey(TableName tableName,
 			String primaryKey) throws SQLException {

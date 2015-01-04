@@ -1,6 +1,6 @@
 package com.shaman.servlet.controller.connection;
 
-public class Request {
+public class Query {
 	public static final String SELECT = "SELECT * FROM user";
 	public static final String ADD_USER = "INSERT INTO user(login,password,email) VALUES (?,?,?)";
 	public static final String COUNT_USERS = "SELECT COUNT(*) AS rowCount FROM user";
