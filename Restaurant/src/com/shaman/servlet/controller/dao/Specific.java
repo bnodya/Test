@@ -24,6 +24,8 @@ public class Specific {
 			switch (tableName) {
 			case USER:
 				return firstHalf + "login='" + keyValue + "'";
+			case ORDER:
+				return firstHalf + "order_id='" + keyValue + "'";
 			default:
 				return null;
 			}

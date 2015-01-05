@@ -13,14 +13,14 @@ public class User {
 	@DBColumn(name = "email")
 	private String email;
 	@DBColumn(name = "access")
-	private int isAdmin;
+	private int access;
 
-	public int isAdmin() {
-		return isAdmin;
+	public int getAccess() {
+		return access;
 	}
 
-	public void setIsAdmin(int isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setAccess(int access) {
+		this.access = access;
 	}
 
 	public int getId() {
@@ -59,7 +59,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", login=" + login + ", password=" + password
-				+ ", email=" + email + ", isAdmin=" + (isAdmin == 1?"Admin":"User") + "]";
+				+ ", email=" + email + ", isAdmin=" + (access == 1?"Admin":"User") + "]";
 	}
 	
 	
