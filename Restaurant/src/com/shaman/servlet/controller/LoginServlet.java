@@ -46,11 +46,13 @@ public class LoginServlet extends HttpServlet {
 			if (UserService.getLoggedUser(request)) {
 
 				user = UserService.getUserByLogin(enteredLogin);
+				double sum = UserService.getOrderPriceByUserId(user.getId());
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("loggedUser", user);
+				session.setAttribute("money", sum);
 				session.setMaxInactiveInterval(30 * 60);
-
+				
 				//request.setAttribute("loggedUser", user);
 				request.getRequestDispatcher("pages/index.jsp").forward(
 						request, response);

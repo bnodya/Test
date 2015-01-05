@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shaman.servlet.controller.dao.daoenum.TableName;
 import com.shaman.servlet.controller.service.OrderService;
+import com.shaman.servlet.model.Item;
 import com.shaman.servlet.model.Order;
 
 /**
@@ -30,11 +32,11 @@ public class OrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Order> list = null;
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!");
+		List<Order> orderList = null;	
+		orderList = OrderService.getOrderList();	
 		
-		list = OrderService.getOrderList();
-		
-		request.setAttribute("orderList", list);
+		request.setAttribute("orderList", orderList);
 		request.getRequestDispatcher("pages/orderlist.jsp").forward(request, response);
 	}
 
@@ -42,7 +44,14 @@ public class OrderServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Object  obj = null;
+		if((obj = request.getAttribute("update")) != null){
+		int orderId = Integer.parseInt((String)obj);
+		
+		}
+		boolean orderPay = request.getParameterValues("orderPay") != null;
+		boolean orderApply = request.getParameterValues("orderApply") != null;
+		System.out.println(orderApply + " " + orderPay + " ");
 	}
 
 }

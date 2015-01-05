@@ -12,6 +12,16 @@
 <link rel="stylesheet" type="text/css" media="all" href="styles/text.css" />
 <link rel="stylesheet" type="text/css" media="all" href="styles/style.css" />
 <link rel="stylesheet" type="text/css" media="all" href="themes/brown/style.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {                        // When the HTML DOM is ready loading, then execute the following function...
+                $('#updatebutton').click(function() {               // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
+                    $.post('orders', function(response) { // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
+                        $('stickySearch').text(response);         // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+                    });
+                });
+            });
+        </script>
 </head>
 <body>
 <div id="warp">
@@ -29,22 +39,75 @@
 	<jsp:include page="menu.jsp" ></jsp:include>
 
     <div id="stickySearch" class="grid_16">
-      <div class="stickyNews grid_12 alpha">
-        <p><a class="bookMan">${message} ${message2}</a></p>
+    </div>
+    <div class="prodNav grid_16">
+      <div class="prodHeadline grid_12 alpha">
+        <h3>Orders</h3>
       </div>
+    </div>
     
+    <div class="bodyContent grid_16">
+      <div class="shopCart grid_16 alpha">
+        <div class="headCart grid_16 alpha">
+          <div class="itemHead grid_1 alpha"> Id</div>
+          <div class="priceHead grid_4"> Items</div>
+          <div class="qtyHead grid_1"> User</div>
+          <div class="subtotalHead grid_3"> Date</div>
+          <div class="subtotalHead grid_3"> Price</div>
+          <div class="subtotalHead grid_2"> Apply</div>
+          <div class="remHead grid_2 omega"> Paid</div>
+        </div>
+        <c:forEach var="order" items="${orderList}">
+        <form action="#" method="get">
+          <div class="bodyCart grid_16 alpha">
+            <div class="warpCart">
+             <div class="subtotal grid_1 alpha">
+                <p><c:out value="${order.id}"/></p>
+              </div>
+              <div class="subtotal grid_4">
+                <p><c:out value="${order.userId}"/></p>
+              </div>
+              <div class="subtotal grid_1">
+                <p><c:out value="${order.userId}"/></p>
+              </div>
+              <div class="subtotal grid_3">
+                <p><c:out value="${order.date}"/></p>
+              </div>
+              <div class="subtotal grid_3">
+                <p><c:out value="${order.price}"/></p>
+              </div>
+              <div class="subtotal grid_2">
+               <c:choose>
+               	 <c:when test="${order.applied}">
+              		 <input type="checkbox" checked="checked" name="orderApply" value='apply'/>
+               	</c:when>
+              	 <c:otherwise>
+              		 <input type="checkbox" name="orderApply" value='apply'/>
+              	 </c:otherwise>
+               </c:choose>
+              </div>
+              <div class="subtotal grid_2 omega">
+              <c:choose>
+             	 <c:when test="${order.paid}">
+             		  <input type="checkbox" checked="checked" name="orderPay" value='pay'/>
+              	 </c:when>
+              	 <c:otherwise>
+             	 	 <input type="checkbox" name="orderPay" value='pay'/>
+               	</c:otherwise>
+               </c:choose>
+              </div>
+            </div>
+          </div>
+       	<div class="buttonCart grid_16 alpha">
+            <input type="button" id="updatebutton" name="update" class="update" value="${order.id}" />
+            <div class="clear"></div>
+          </div>
+        </form>
+      </c:forEach>
+      </div>
     </div>
-    <div class="checkout grid_16">
-      
-      
-    	<p>${message}</p>
-    		<c:forEach var="order" items="${orderList}">
-     		<c:out value="${order}"/>
-    		 <br>
-		 </c:forEach>
-   	
-      
-    </div>
+    
+    
   </div>
   <div class="clear"></div>
 </div>

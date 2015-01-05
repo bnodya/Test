@@ -178,7 +178,16 @@ public class Transformer<T> {
 		return null;
 	}
 
+	public static double resultSetToPrice(ResultSet rs) throws SQLException{
+		double sum = 0;
 	
+			while(rs.next()){
+				double price = rs.getDouble(1);
+				int quantity = rs.getInt(2);
+				sum += price*quantity;
+			}
+		return sum;
+	}
 	//
 	// public static <T> PreparedStatement getPreparedUpdate(Connection con,
 	// TableName tableName, T oldPojo, T currentPojo) throws SQLException {

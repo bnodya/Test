@@ -6,8 +6,8 @@
 
 	<c:choose>
       <c:when  test="${not empty loggedUser}">
-        <h3 class="login"><span class="hiUser"><c:out value="Hi, ${loggedUser.login}"></c:out> |</span> <span class="myAccount"><a href="#">My Account</a></span> <a href="logout">Logout</a></h3>
-    	<p>Subtotal: $ 00.00</p>
+        <h3 class="login"><span class="hiUser"><c:out value="Hi, ${loggedUser.login}"></c:out> |</span> <span class="myAccount"></span> <a href="logout">Logout</a></h3>
+    	<p>Subtotal: ${money} grn</p>
         <p><span class="vChart"><a href="cart">View Cart</a></span> <span class="cOut"><a href="checkout">Checkout</a></span></p>
        </c:when>
        <c:otherwise>

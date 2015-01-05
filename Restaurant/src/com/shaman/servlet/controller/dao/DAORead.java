@@ -19,7 +19,7 @@ import com.shaman.servlet.model.Item;
 public class DAORead {
 
 	DAOFactory fac = null;
-	Connection con = null;
+	static Connection con = null;
 
 	public DAORead(DAOFactory factory) {
 		fac = factory;
@@ -164,5 +164,23 @@ public class DAORead {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public static double getOrderPriceByUserId(int id){
+		double sum = 0;
+		ResultSet rs = null;
+		try {
+			PreparedStatement ps = con.prepareStatement(Query.SELECT_PRICE_AND_QUANTITY_BY_USER_ID);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			sum = Transformer.resultSetToPrice(rs);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	
+		return sum;
 	}
 }

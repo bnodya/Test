@@ -48,23 +48,19 @@
     <div class="products grid_16">
       <div class="productsWarp">
         <ul>
-          <li><a href="product_overview"><img src="images/cake1.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product_overview"><img src="images/cake2.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product_overview"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product_overview"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
-          <li><a href="product_overview"><img src="images/cake3.jpg" alt="" width="938" height="398" /></a></li>
-          
-         
+        <c:forEach var="item" items="${itemList}"> 
+          <li><a href="product_overview"><img src="${item.picture}" alt="" width="938" height="398" /></a></li>
+          </c:forEach>
         </ul>
       </div>
     </div>
     <div class="productThumb grid_10 prefix_3 suffix_3">
       <ul>
-        <li class="grid_2 alpha"><a href="#"><img src="images/thumb1.jpg" alt="" width="100" height="60" /></a></li>
-        <li class="grid_2"><a href="#"><img src="images/thumb2.jpg" alt="" width="100" height="60" /></a></li>
-        <li class="grid_2"><a href="#"><img src="images/thumb1.jpg" alt="" width="100" height="60" /></a></li>
-        <li class="grid_2"><a href="#"><img src="images/thumb2.jpg" alt="" width="100" height="60" /></a></li>
-        <li class="grid_2 omega"><a href="#"><img src="images/thumb1.jpg" alt="" width="100" height="60" /></a></li>
+        <li class="grid_2 alpha"><a href="#"><img src="${itemList[0].picture}" alt="" width="100" height="60" /></a></li>
+        <li class="grid_2 "><a href="#"><img src="${itemList[1].picture}" alt="" width="100" height="60" /></a></li>
+        <li class="grid_2"><a href="#"><img src="${itemList[2].picture}" alt="" width="100" height="60" /></a></li>
+        <li class="grid_2"><a href="#"><img src="${itemList[3].picture}" alt="" width="100" height="60" /></a></li>
+        <li class="grid_2 omega"><a href="#"><img src="${itemList[5].picture}" alt="" width="100" height="60" /></a></li>
       </ul>
     </div>
   </div>

@@ -51,4 +51,15 @@ public class UserService {
 			}
 			return status;
 	}
+	
+	@SuppressWarnings("static-access")
+	public static double getOrderPriceByUserId(int id){
+		try {
+			return dao.getDAORead().getOrderPriceByUserId(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

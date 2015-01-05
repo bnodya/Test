@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,33 +40,31 @@
       <div class="products grid_16 alpha">
         <div class="prodMenu">
           <h4>Food </h4>
-          <div class="menu grid_4 alpha">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake1.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Delicious Cheesecake in Huge Pan With Choco Slices</a></p>
-          </div>
-          <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheese Poof</a></p>
-          </div>
-          <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Whatever Cake With Vanilla Ice Cream and Chocolate Melt</a></p>
-          </div>
+         
+	          <c:forEach var="item" items="${itemList}">
+	           <c:choose>
+	           <c:when test="${!item.type}">
+	          	<div class="menu grid_4 alpha">
+	            <p><a href="product_details" class="grid_4 alpha"><img src="${item.picture}" alt="" width="220" height="120" /></a><br />
+	              ${item.description}</p>
+	         	 </div>
+	         	 </c:when>
+	      		</c:choose>
+	          </c:forEach>
         </div>
         <div class="prodMenu">
           <h4>Drink </h4>
+          <c:forEach var="item" items="${itemList}">
+	           <c:choose>
+	           <c:when test="${item.type}">
           <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheese Poof</a></p>
+            <p><a href="product_details" class="grid_4 alpha"><img src="${item.picture}" alt="" width="220" height="120" /></a><br />
+              ${item.description}</p>
           </div>
-          <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Whatever Cake With Vanilla Ice Cream and Chocolate Melt</a></p>
-          </div>
-          <div class="menu grid_4 omega">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheesey Browney</a></p>
-          </div>
+           </c:when>
+	      		</c:choose>
+	          </c:forEach>
+         
         </div>
       </div>
     </div>
