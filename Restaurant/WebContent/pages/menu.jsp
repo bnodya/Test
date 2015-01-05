@@ -6,11 +6,8 @@
 <div id="mainMenu" class="grid_16">
       <ul>
         <li><a href="index" class="Active">Home</a></li>
-        <li><a href="product_overview">Cakes</a></li>
+        <li><a href="product_overview">Food &amp; Drink</a></li>
         <li><a href="checkout">Order &amp; Delivery</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
         <c:choose>
           <c:when  test="${not empty loggedUser}">
           	<c:if test="${loggedUser.access == '1'}">

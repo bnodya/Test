@@ -14,8 +14,19 @@ public class Item {
 	private double price;
 	@DBColumn(name = "picture")
 	private String picture;
+	@DBColumn(name = "type")
+	private boolean type;
+	
 		
 	
+	public boolean isType() {
+		return type;
+	}
+
+	public void setType(boolean type) {
+		this.type = type;
+	}
+
 	public String getPicture() {
 		return picture;
 	}
@@ -59,6 +70,6 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Dish [id=" + id + ", name=" + name + ", description="
-				+ description + ", price=" + price + "]";
+				+ description + ", price=" + price + ", type=" + (type == false?"Food":"Drink") + "]";
 	}
 }

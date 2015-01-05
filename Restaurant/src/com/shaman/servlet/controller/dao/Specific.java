@@ -26,6 +26,8 @@ public class Specific {
 				return firstHalf + "login='" + keyValue + "'";
 			case ORDER:
 				return firstHalf + "order_id='" + keyValue + "'";
+			case ITEM:
+				return firstHalf + "type='" + keyValue + "'";
 			default:
 				return null;
 			}

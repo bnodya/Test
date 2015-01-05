@@ -29,23 +29,14 @@
     </div>
     <div class="prodNav grid_16">
       <div class="prodHeadline grid_12 alpha">
-        <h3>Cakes</h3>
+        <h3>Taste it!</h3>
       </div>
-      <div class="browseCategory grid_4 omega">
-        <form action="#" method="get">
-          <select>
-            <option>All Category</option>
-            <option>Brownimissu</option>
-            <option>Kue Tete</option>
-            <option>Bagelan</option>
-          </select>
-        </form>
-      </div>
+     
     </div>
     <div class="bodyContent grid_16">
       <div class="products grid_16 alpha">
         <div class="prodMenu">
-          <h4>Brownies <a href="#" class="viewAll">View All &raquo;</a></h4>
+          <h4>Food </h4>
           <div class="menu grid_4 alpha">
             <p><a href="#" class="grid_4 alpha"><img src="images/freshCake1.jpg" alt="" width="220" height="120" /></a><br />
               <a href="#">Delicious Cheesecake in Huge Pan With Choco Slices</a></p>
@@ -57,18 +48,10 @@
           <div class="menu grid_4">
             <p><a href="#" class="grid_4 alpha"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a><br />
               <a href="#">Whatever Cake With Vanilla Ice Cream and Chocolate Melt</a></p>
-          </div>
-          <div class="menu grid_4 omega">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheesey Browney</a></p>
           </div>
         </div>
         <div class="prodMenu">
-          <h4>Cheesecakes <a href="#" class="viewAll">View All &raquo;</a></h4>
-          <div class="menu grid_4 alpha">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake1.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Delicious Cheesecake in Huge Pan With Choco Slices</a></p>
-          </div>
+          <h4>Drink </h4>
           <div class="menu grid_4">
             <p><a href="#" class="grid_4 alpha"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a><br />
               <a href="#">Cheese Poof</a></p>
@@ -82,54 +65,6 @@
               <a href="#">Cheesey Browney</a></p>
           </div>
         </div>
-        <div class="prodMenu">
-          <h4>Cupcakes <a href="#" class="viewAll">View All &raquo;</a></h4>
-          <div class="menu grid_4 alpha">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake1.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Delicious Cheesecake in Huge Pan With Choco Slices</a></p>
-          </div>
-          <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheese Poof</a></p>
-          </div>
-          <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Whatever Cake With Vanilla Ice Cream and Chocolate Melt</a></p>
-          </div>
-          <div class="menu grid_4 omega">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheesey Browney</a></p>
-          </div>
-        </div>
-        <div class="prodMenu">
-          <h4>Pies <a href="#" class="viewAll">View All &raquo;</a></h4>
-          <div class="menu grid_4 alpha">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake1.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Delicious Cheesecake in Huge Pan With Choco Slices</a></p>
-          </div>
-          <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake2.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheese Poof</a></p>
-          </div>
-          <div class="menu grid_4">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake3.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Whatever Cake With Vanilla Ice Cream and Chocolate Melt</a></p>
-          </div>
-          <div class="menu grid_4 omega">
-            <p><a href="#" class="grid_4 alpha"><img src="images/freshCake4.jpg" alt="" width="220" height="120" /></a><br />
-              <a href="#">Cheesey Browney</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="commentPages grid_16">
-        <ul>
-          <li><a href="#">&laquo; Prev</a></li>
-          <li><a href="#" class="commentPageActive">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">Next &raquo;</a></li>
-        </ul>
       </div>
     </div>
   </div>
