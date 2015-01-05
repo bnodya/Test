@@ -116,7 +116,7 @@ public class Transformer<T> {
 						case "double":
 							field.setDouble(pojo, rs.getDouble(column));
 							break;
-						case "String":
+						case "string":
 							field.set(pojo, rs.getString(column));
 							break;
 						case "date":
