@@ -1,10 +1,12 @@
 package com.shaman.servlet.controller.dao.daoenum;
 
-import com.shaman.servlet.model.Dish;
+import com.shaman.servlet.model.Item;
+import com.shaman.servlet.model.Order;
 import com.shaman.servlet.model.User;
 
+
 public enum TableName {
-	USER("user",User.class), ORDER("order",null), DRINK("drink",null), DISH("dish",Dish.class), DETAIL("detail",null), ORDERED_DISH("oredered_dish",null), ORDERED_DRINK("ordered_drink",null);
+	USER("user",User.class), ORDER("order",Order.class), ITEM("item",Item.class), DETAIL("detail",null);
 	
 	private final String tableName;
 	private final Class classFile;

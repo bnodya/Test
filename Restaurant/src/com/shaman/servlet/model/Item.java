@@ -2,9 +2,9 @@ package com.shaman.servlet.model;
 
 import com.shaman.servlet.controller.transformer.annotation.DBColumn;
 
-public class Dish {
+public class Item {
 
-	@DBColumn(name = "dish_id")
+	@DBColumn(name = "item_id")
 	private int id;
 	@DBColumn(name = "name")
 	private String name;
@@ -12,6 +12,17 @@ public class Dish {
 	private String description;
 	@DBColumn(name = "price")
 	private double price;
+	@DBColumn(name = "picture")
+	private String picture;
+		
+	
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
 	public int getId() {
 		return id;

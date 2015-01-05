@@ -48,10 +48,10 @@ public class LoginServlet extends HttpServlet {
 				user = UserService.getUserByLogin(enteredLogin);
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("loggedUser", enteredLogin);
+				session.setAttribute("loggedUser", user);
 				session.setMaxInactiveInterval(30 * 60);
 
-				request.setAttribute("loggedUser", user);
+				//request.setAttribute("loggedUser", user);
 				request.getRequestDispatcher("pages/index.jsp").forward(
 						request, response);
 			}

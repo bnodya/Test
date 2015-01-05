@@ -60,7 +60,7 @@ public class Transformer<T> {
 						field.set(pojo, rs.getString(column));
 						break;
 					case "date":
-						field.set(pojo, rs.getDate(column));
+						field.set(pojo, rs.getTimestamp(column));
 						break;
 					case "boolean":
 						field.setBoolean(pojo, rs.getBoolean(column));
@@ -178,6 +178,7 @@ public class Transformer<T> {
 		return null;
 	}
 
+	
 	//
 	// public static <T> PreparedStatement getPreparedUpdate(Connection con,
 	// TableName tableName, T oldPojo, T currentPojo) throws SQLException {

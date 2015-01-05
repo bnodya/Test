@@ -8,4 +8,6 @@ public class Query {
 	public static final String DELETE_USER_BY_NAME = "DELETE FROM user WHERE login=?";
 	public static final String SELECT_USER_BY_NAME_AND_PASSWORD = "SELECT * FROM user WHERE login=? AND password=?";
 	public static final String CHECK_USER = "SELECT COUNT(*) AS rowCount FROM user WHERE login=?";
+	public static final String SELECT_ITEMS_BY_ORDER_ID = "SELECT * FROM restaurant_db.item i JOIN restaurant_db.detail d ON d.item_id = i.item_id JOIN restaurant_db.`order` o ON d.order_id = o.order_id WHERE o.order_id = ?";
+	public static final String SELECT_ITEMS_BY_USER_ID = "SELECT * FROM restaurant_db.item i JOIN restaurant_db.detail d ON d.item_id = i.item_id JOIN restaurant_db.`order` o ON d.order_id = o.order_id JOIN users u ON o.user_id = u.id WHERE u.id = ?";
 }
