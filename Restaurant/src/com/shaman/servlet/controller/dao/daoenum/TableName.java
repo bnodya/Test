@@ -6,7 +6,7 @@ import com.shaman.servlet.model.User;
 
 
 public enum TableName {
-	USER("user",User.class), ORDER("order",Order.class), ITEM("item",Item.class), DETAIL("detail",null);
+	USER("user",User.class), ORDER("orders",Order.class), ITEM("item",Item.class), DETAIL("detail",null);
 	
 	private final String tableName;
 	private final Class classFile;

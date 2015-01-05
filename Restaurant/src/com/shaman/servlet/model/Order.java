@@ -77,6 +77,13 @@ public class Order {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", detailId=" + detailId + ", userId="
+				+ userId + ", adminId=" + adminId + ", date=" + date
+				+ ", applied=" + (applied == true?"yes":"no") + ", ready=" + (ready == true?"yes":"no") + ", paid="
+				+ (paid == true?"yes":"no") + ", price=" + price + "]";
+	}
 	
 	
 }

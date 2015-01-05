@@ -15,10 +15,11 @@
           <c:when  test="${not empty loggedUser}">
           	<c:if test="${loggedUser.access == '1'}">
         		<li><a href="users">Users</a></li>
+        		 <li><a href="orders">Orders</a></li>
         	</c:if>
         </c:when>
         </c:choose>
-        <li><a href="#">Orders</a></li>
+       
         
       </ul>
     </div>

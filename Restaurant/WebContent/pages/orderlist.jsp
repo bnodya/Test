@@ -38,8 +38,8 @@
       
       
     	<p>${message}</p>
-    		<c:forEach var="user" items="${userList}">
-     		<c:out value="${user}"/>
+    		<c:forEach var="order" items="${orderList}">
+     		<c:out value="${order}"/>
     		 <br>
 		 </c:forEach>
    	
