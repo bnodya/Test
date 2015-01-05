@@ -29,22 +29,54 @@
 	<jsp:include page="menu.jsp" ></jsp:include>
 
     <div id="stickySearch" class="grid_16">
-      <div class="stickyNews grid_12 alpha">
-        <p><a class="bookMan">${message} ${message2}</a></p>
+    </div>
+    <div class="prodNav grid_16">
+      <div class="prodHeadline grid_12 alpha">
+        <h3>Users</h3>
       </div>
+    </div>
     
+    <div class="bodyContent grid_16">
+      <div class="shopCart grid_16 alpha">
+        <div class="headCart grid_16 alpha">
+          <div class="itemHead grid_2 alpha"> Id</div>
+          <div class="priceHead grid_4"> Login</div>
+          <div class="qtyHead grid_4"> Password</div>
+          <div class="subtotalHead grid_4"> Email</div>
+          <div class="remHead grid_2 omega"> Access</div>
+        </div>
+        <c:forEach var="user" items="${userList}">
+        <form action="#" method="get">
+          <div class="bodyCart grid_16 alpha">
+            <div class="warpCart">
+             <div class="subtotal grid_2 alpha">
+                <p><c:out value="${user.id}"/></p>
+              </div>
+              <div class="subtotal grid_4">
+                <p><c:out value="${user.login}"/></p>
+              </div>
+              <div class="subtotal grid_4">
+                <p><c:out value="${user.password}"/></p>
+              </div>
+              <div class="subtotal grid_4">
+                <p><c:out value="${user.email}"/></p>
+              </div>
+              <div class="subtotal grid_2 omega">
+                <p><c:out value="${user.access}"/></p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </c:forEach>
+      </div>
     </div>
-    <div class="checkout grid_16">
-      
-      
-    	<p>${message}</p>
-    		<c:forEach var="user" items="${userList}">
-     		<c:out value="${user}"/>
-    		 <br>
-		 </c:forEach>
-   	
-      
-    </div>
+    
+    
+    
+    
+    
+    
+    
   </div>
   <div class="clear"></div>
 </div>
