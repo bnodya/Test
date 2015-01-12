@@ -42,7 +42,9 @@ public class LoginServlet extends HttpServlet {
 		String enteredLogin = request.getParameter("enteredLogin");
 		UserValidator validate = new UserValidator(request);
 		User user = null;
-		if (validate.isValidLogin() && !validate.isValidPassword()) {
+		System.out.println(validate.isValidLogin() +" " + validate.isValidLoginPassword());
+		if (validate.isValidLogin() && validate.isValidLoginPassword()) {
+			
 			if (UserService.getLoggedUser(request)) {
 
 				user = UserService.getUserByLogin(enteredLogin);

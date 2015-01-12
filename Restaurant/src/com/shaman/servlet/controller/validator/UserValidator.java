@@ -26,10 +26,23 @@ public class UserValidator {
 	
 	public boolean isValidPassword(){
 		boolean status = false;
-		 String ePattern = "^[a-z0-9_-]{6,18}$";
+		 String ePattern = "^[a-z0-9_-]{3,18}$";
 	        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-	        java.util.regex.Matcher m = p.matcher(enteredLogin);
+	        java.util.regex.Matcher m = p.matcher(enteredPassword);
+	        
 		if(m.matches() && enteredPassword.equals(reenteredPassword) ){
+			status = true;
+		}
+		return status;
+	}
+	
+	public boolean isValidLoginPassword(){
+		boolean status = false;
+		 String ePattern = "^[a-z0-9_-]{3,18}$";
+	        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+	        java.util.regex.Matcher m = p.matcher(enteredPassword);
+	        
+		if(m.matches() ){
 			status = true;
 		}
 		return status;
