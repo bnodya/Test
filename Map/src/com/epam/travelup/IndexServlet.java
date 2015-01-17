@@ -29,15 +29,15 @@ public class IndexServlet extends HttpServlet {
 		ResultSet rs = null;
 		List<String> list = null;
 		try {
-			PreparedStatement stmt = ConnectionManager.getConnection().prepareStatement("SELECT m.x_coord, m.y_coord FROM map m WHERE m.route_id = ?");
-			stmt.setInt(1, 2);
+			PreparedStatement stmt = ConnectionManager.getConnection().prepareStatement("SELECT p.x_coordinate, p.y_coordinate FROM place p JOIN place_to_route pr ON p.id = pr.place_id WHERE pr.route_id = ?");
+			stmt.setInt(1, 5);
 			rs = stmt.executeQuery();
 
 			list = new ArrayList<>();
 
 			while (rs.next()) {
-				list.add(rs.getString("x_coord") + ", "
-						+ rs.getString("y_coord"));
+				list.add(rs.getString("x_coordinate") + ", "
+						+ rs.getString("y_coordinate"));
 			}
 		} catch (SQLException | PropertyVetoException e) {
 			// TODO Auto-generated catch block

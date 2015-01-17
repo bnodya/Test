@@ -15,7 +15,7 @@ public class ConnectionManager {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/test";
+			String url = "jdbc:mysql://localhost:3306/toursite_database";
 			String name = "root";
 			String pass = "pass";
 
